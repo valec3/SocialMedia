@@ -12,15 +12,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useForm } from 'react-hook-form'
-
-const formSchema = z.object({
-    username: z.string().min(3).max(10),
-})
-
+import { SignupValidation } from '@/lib/validation'
 const SignupForm = () => {
      // 1. Define your form.
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof SignupValidation>>({
+        resolver: zodResolver(SignupValidation),
         defaultValues: {
         username: "",
         },
